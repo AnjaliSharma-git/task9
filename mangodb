@@ -1,0 +1,247 @@
+// inserting data in user
+
+test> db.user.insertMany([
+...   {
+...     "_id": ObjectId("652fc30e8c82f76b0e1b1f01"),
+...     "name": "Anjali",
+...     "email": "Anjali@gmail.com",
+...     "course": "Full Stack Development",
+...     "batch": "FS-2024A",
+...     "mentor_id": ObjectId("652fc4e68c82f76b0e1b1f06"),
+...     "codekata_solved": 120,
+...     "attendance": [
+...         { "date": ISODate("2020-10-16T00:00:00Z"), "status": "Absent" },
+...         { "date": ISODate("2020-10-17T00:00:00Z"), "status": "Present" },
+...         { "date": ISODate("2020-10-19T00:00:00Z"), "status": "Absent" }
+...     ],
+...     "tasks": [
+...         { "task_id": ObjectId("652fc9c88c82f76b0e1b1f0a"), "submission_status": "Not Submitted" },
+...         { "task_id": ObjectId("652fc9c88c82f76b0e1b1f0b"), "submission_status": "Submitted" }
+...     ]
+...   },
+...   {
+...     "_id": ObjectId("652fc30e8c82f76b0e1b1f02"),
+...     "name": "Rahul",
+...     "email": "rahul@gmail.com",
+...     "course": "Data Science",
+...     "batch": "DS-2024B",
+...     "mentor_id": ObjectId("652fc4e68c82f76b0e1b1f07"),
+...     "codekata_solved": 200,
+...     "attendance": [
+...         { "date": ISODate("2020-10-18T00:00:00Z"), "status": "Absent" },
+...         { "date": ISODate("2020-10-20T00:00:00Z"), "status": "Present" }
+...     ],
+...     "tasks": [
+...         { "task_id": ObjectId("652fc9c88c82f76b0e1b1f0c"), "submission_status": "Submitted" },
+...         { "task_id": ObjectId("652fc9c88c82f76b0e1b1f0d"), "submission_status": "Not Submitted" }
+...     ]
+...   }
+... ])
+
+
+// inserting data in codekata
+
+test> db.codekata.insertMany([
+... { "_id": ObjectId("652fc56b8c82f76b0e1b1f08"), "user_id": ObjectId("652fc30e8c82f76b0e1b1f01"), "problems_solved": 120 }, { "_id": ObjectId("652fc56b8c82f76b0e1b1f09"), "user_id": ObjectId("652fc30e8c82f76b0e1b1f02"), "problems_solved":
+ 200 }
+... ])
+
+// inserting data in attendence
+
+test> db.attendence.insertMany([
+...   {
+...     "_id": ObjectId("652fc68c8c82f76b0e1b1f10"),
+...     "user_id": ObjectId("652fc30e8c82f76b0e1b1f01"),
+...     "date": ISODate("2020-10-16T00:00:00Z"),
+...     "status": "Present"
+...   },
+...   {
+...     "_id": ObjectId("652fc68c8c82f76b0e1b1f11"),
+...     "user_id": ObjectId("652fc30e8c82f76b0e1b1f02"),
+...     "date": ISODate("2020-10-18T00:00:00Z"),
+...     "status": "Absent"
+...   }
+... ])
+
+// inserting data in topics
+
+test> db.topics.insertMany([
+...   {
+...     "_id": ObjectId("652fc7b88c82f76b0e1b1f12"),
+...     "title": "JavaScript Basics",
+...     "description": "Introduction to JavaScript fundamentals.",
+...     "date": ISODate("2024-10-10T00:00:00Z")
+...   },
+...   {
+...     "_id": ObjectId("652fc7b88c82f76b0e1b1f13"),
+...     "title": "Machine Learning Introduction",
+...     "description": "Basics of machine learning concepts.",
+...     "date": ISODate("2024-10-15T00:00:00Z")
+...   }
+... ])
+
+// inserting data in task
+
+test> db.task.insertMany([
+...   {
+...     "_id": ObjectId("652fc9c88c82f76b0e1b1f0a"),
+...     "title": "JavaScript Assignment 1",
+...     "description": "Solve the given set of JavaScript problems.",
+...     "assigned_date": ISODate("2024-10-12T00:00:00Z"),
+...     "due_date": ISODate("2024-10-19T00:00:00Z")
+...   },
+...   {
+...     "_id": ObjectId("652fc9c88c82f76b0e1b1f0b"),
+...     "title": "Machine Learning Project",
+...     "description": "Build a simple linear regression model.",
+...     "assigned_date": ISODate("2024-10-15T00:00:00Z"),
+...     "due_date": ISODate("2024-10-25T00:00:00Z")
+...   }
+... ])
+
+// inserting data in company
+
+test> db.company.insertMany([
+...   {
+...     "_id": ObjectId("652fcadf8c82f76b0e1b1f15"),
+...     "company_name": "HCL",
+...     "date": ISODate("2020-10-20T00:00:00Z"),
+...     "students_appeared": [
+...       ObjectId("652fc30e8c82f76b0e1b1f01"),
+...       ObjectId("652fc30e8c82f76b0e1b1f02")
+...     ]
+...   },
+...   {
+...     "_id": ObjectId("652fcadf8c82f76b0e1b1f16"),
+...     "company_name": "TCS",
+...     "date": ISODate("2020-10-25T00:00:00Z"),
+...     "students_appeared": [
+...       ObjectId("652fc30e8c82f76b0e1b1f01")
+...     ]
+...   }
+... ])
+
+// inserting data in mentors
+
+test> db.mentors.insertMany([
+... {
+...     "_id": ObjectId("652fc4e68c82f76b0e1b1f06"),
+...     "name": "Poonam",
+...     "mentees": [
+...       ObjectId("652fc30e8c82f76b0e1b1f01"),
+...       ObjectId("652fc30e8c82f76b0e1b1f02"),
+...     ]
+...   },
+...   {
+...     "_id": ObjectId("652fc4e68c82f76b0e1b1f07"),
+...     "name": "Shiva",
+...     "mentees": [
+...       ObjectId("652fc30e8c82f76b0e1b1f02"),
+...     ]
+...   }
+... ])
+
+// Find all the topics which are thought in the month of October
+
+test> db.topics.find({date: {$gte: ISODate("2024-10-01T00:00:00Z"),$lt: ISODate("2024-11-01T00:00:00Z")}});
+[
+  {
+    _id: ObjectId('652fc7b88c82f76b0e1b1f12'),
+    title: 'JavaScript Basics',
+    description: 'Introduction to JavaScript fundamentals.',
+    date: ISODate('2024-10-10T00:00:00.000Z')
+  },
+  {
+    _id: ObjectId('652fc7b88c82f76b0e1b1f13'),
+    title: 'Machine Learning Introduction',
+    description: 'Basics of machine learning concepts.',
+    date: ISODate('2024-10-15T00:00:00.000Z')
+  }
+]
+
+// find all tasks which are thought in the month of October
+
+test> db.task.find({assigned_date: {$gte: ISODate("2024-10-01T00:00:00Z"),$lt: ISODate("2024-11-01T00:00:00Z")}});
+[
+  {
+    _id: ObjectId('652fc9c88c82f76b0e1b1f0a'),
+    title: 'JavaScript Assignment 1',
+    description: 'Solve the given set of JavaScript problems.',
+    assigned_date: ISODate('2024-10-12T00:00:00.000Z'),
+    due_date: ISODate('2024-10-19T00:00:00.000Z')
+  },
+  {
+    _id: ObjectId('652fc9c88c82f76b0e1b1f0b'),
+    title: 'Machine Learning Project',
+    description: 'Build a simple linear regression model.',
+    assigned_date: ISODate('2024-10-15T00:00:00.000Z'),
+    due_date: ISODate('2024-10-25T00:00:00.000Z')
+  }
+]
+
+// Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+test> db.company.find({date: {$gte: ISODate("2020-10-15T00:00:00Z"),$lte: ISODate("2020-10-31T23:59:59Z")}});
+[
+  {
+    _id: ObjectId('652fcadf8c82f76b0e1b1f15'),
+    company_name: 'HCL',
+    date: ISODate('2020-10-20T00:00:00.000Z'),
+    students_appeared: [
+      ObjectId('652fc30e8c82f76b0e1b1f01'),
+      ObjectId('652fc30e8c82f76b0e1b1f02')
+    ]
+  },
+  {
+    _id: ObjectId('652fcadf8c82f76b0e1b1f16'),
+    company_name: 'TCS',
+    date: ISODate('2020-10-25T00:00:00.000Z'),
+    students_appeared: [ ObjectId('652fc30e8c82f76b0e1b1f01') ]
+  }
+]
+
+// Find all the company drives and students who are appeared for the placement.
+
+test> db.company.aggregate([{$lookup: {from: "users",localField: "students_appeared",foreignField: "_id",as: "student_details" }}]);
+[
+  {
+    _id: ObjectId('652fcadf8c82f76b0e1b1f15'),
+    company_name: 'HCL',
+    date: ISODate('2020-10-20T00:00:00.000Z'),
+    students_appeared: [
+      ObjectId('652fc30e8c82f76b0e1b1f01'),
+      ObjectId('652fc30e8c82f76b0e1b1f02')
+    ],
+    student_details: []
+  },
+  {
+    _id: ObjectId('652fcadf8c82f76b0e1b1f16'),
+    company_name: 'TCS',
+    date: ISODate('2020-10-25T00:00:00.000Z'),
+    students_appeared: [ ObjectId('652fc30e8c82f76b0e1b1f01') ],
+    student_details: []
+  }
+]
+
+// Find the number of problems solved by the user in codekata
+
+test> db.codekata.aggregate([ { $group: { _id: "$user_id", total_problems_solved: { $sum: "$problems_solved" } } } ]);
+[
+  {
+    _id: ObjectId('652fc30e8c82f76b0e1b1f01'),
+    total_problems_solved: 120
+  },
+  {
+    _id: ObjectId('652fc30e8c82f76b0e1b1f02'),
+    total_problems_solved: 200
+  }
+]
+
+// Find all the mentors with who has the mentee's count more than 15
+
+test> db.mentors.find({$where: "this.mentees.length > 15"});
+
+// Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+test> db.user.aggregate([{$match: {"attendance": {$elemMatch: {date: {$gte: ISODate("2020-10-15T00:00:00Z"), $lte: ISODate("2020-10-31T23:59:59Z") },status: "Absent"}},"tasks": {$elemMatch: {submission_status: "Not Submitted"}}}},{$count: "absent_and_not_submitted"}]);
+[ { absent_and_not_submitted: 2 } ]
